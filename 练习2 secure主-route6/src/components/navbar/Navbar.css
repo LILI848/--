@@ -1,0 +1,99 @@
+.navbar {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  /* z-index决定stacking context，数字更大就叠加在上方 */
+  z-index: 10;
+}
+
+.navbar .container {
+  display: flex;
+  /* space-between: items are evenly distributed in the line; first item is on the start line, last item on the end line */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  display: flex;
+  /*  center: items are centered in the cross-axis */
+  align-items: center;
+  color: #fff;
+  margin: 1rem;
+}
+
+.navbar .logo .icon {
+  font-size: 3rem;
+  margin-right: 1rem;
+  color: var(--primary-color);
+}
+
+/* 设置多个选项变成横向排列，在中轴线位置； */
+.navbar .nav-menu {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  padding: 1rem;
+}
+
+/* 设置选项中的字体大小及颜色 */
+.navbar li {
+  padding: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.hamburger {
+  /* 在大屏幕上不显示图标 */
+  display: none;
+  padding: 1rem;
+}
+
+/* 设置hamburger菜单图标大小及颜色，确保在移动设备上显示该样式 */
+.navbar .icon {
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+/* 移动设备设置： */
+@media screen and (max-width: 940px) {
+  .navbar .hamburger {
+    /*  确保移动设备上只显示一个图标，其他菜单内容点击图标后才出现； */
+    display: block;
+    /* z-index确保该图标一直保持在最上层； */
+    z-index: 15;
+  }
+
+  .navbar .nav-menu {
+    position: absolute;
+    /* column: align items along the cross axis,垂直轴对齐,从上到下摆放 */
+    flex-direction: column;
+    width: 100%;
+    /* height和top决定了高度占整个屏幕高 */
+    height: 100vh;
+    top: 0;
+
+    /* 垂直居中 */
+    align-items: center;
+    /* 水平居中 */
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.8);
+    /* left决定初始时隐藏该菜单在屏幕左边位置 */
+    left: -100%;
+    /* 动画效果transition: <property> <duration> <timing-function> <delay>; */
+    transition: 0.5s ease-in;
+  }
+
+  /*  确保当菜单名变成active的时候，该菜单从左边推出占据屏幕； */
+  .navbar .active {
+    left: 0;
+  }
+
+  .navbar li {
+    margin-right: 1rem;
+    font-size: 2rem;
+  }
+
+  .navbar button {
+    font-size: 1.8rem;
+  }
+}

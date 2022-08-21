@@ -1,0 +1,41 @@
+/* 设置背景图片，让图片居中并适应浏览器大小，cover保证拉伸成相应大小不会变形 */
+
+.hero {
+  width: 100%;
+  height: 100vh;
+  background: url("../../assets/cyber-bg.png") no-repeat center center/cover;
+}
+
+.hero .container {
+  display: grid;
+  /*  语法： repeat(number of columns/rows, the column width we want) 
+      grid重复两个1fr的格子；fr就是一等份单位；
+      这里就是把grid分成50%+50%，两等份；
+      这个单位可以自动将分隔线的宽度grid-column-gap考虑在内，不用手动计算了；
+  */
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.hero .content {
+  height: 75vh;
+  /* 设置内容方向为垂直column摆放 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  margin-left: 6rem;
+}
+
+.hero h1 {
+  color: #f8f8f8;
+}
+.hero .blue {
+  color: var(--primary-color);
+}
+
+/* 防止在小屏幕时字体变形或者字体位置太右： */
+@media screen and (max-width: 940px) {
+  .hero .content {
+    margin-left: 1rem;
+  }
+}
